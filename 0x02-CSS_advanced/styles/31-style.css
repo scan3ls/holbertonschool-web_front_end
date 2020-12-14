@@ -377,7 +377,7 @@ header {
 }
 
 .card-testimonial .card-quote {
-    position: relative;
+    position: absolute;
 }
 
 .card-testimonial .card-quote::before {
