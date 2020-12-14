@@ -330,7 +330,7 @@ header {
     overflow: hidden;
 }
 
-.card-work .card-image {
+.card-work .card-image img {
     height: 30rem;
     width: 100%;
     object-fit: cover;
@@ -338,6 +338,14 @@ header {
 }
 
 .card-work .card-inner {
+    position: absolute;
+    top: -0.1rem;
+    left: -0.1rem;
+    right: -0.1rem;
+    z-index: 1;
+}
+
+.card-work:hover .card-inner {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
