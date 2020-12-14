@@ -189,7 +189,7 @@ h4, h5, h6 {
 }
 
 .nav .nav-link:hover {
-    color: var(--nav-item-link-hover);
+    color: var(--color-white);
 }
 
 ul.row {
@@ -313,6 +313,8 @@ header {
 .nav .nav-link::before {
     content: "";
     position: absolute;
+    top: 0;
+    left: 0;
     background-color: var(--color-white);
     width: 0;
     height: 0.2rem;
