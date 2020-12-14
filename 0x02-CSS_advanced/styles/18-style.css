@@ -155,3 +155,7 @@ h4, h5, h6 {
     display: block;
     padding: 0.5rem 1rem 0.5rem 1rem;
 }
+
+.nav .nav-link:hover {
+    color: var(--nav-item-link-hover);
+}
