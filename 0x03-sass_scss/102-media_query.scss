@@ -1,0 +1,18 @@
+/* Media query #2 */
+$sizes: (960: 18, 640: 16, 320: 14);
+
+h1 {
+    font-size: 20px;
+    @each $screen-size, $font-size in $sizes {
+        @media screen and (max-width: #{$screen-size}px){
+            & {
+                font-size: $font-size;
+                @if $screen-size == 320 {
+                    &.small {
+                        color: #1D1D1D;
+                    }
+                }
+            }
+        }
+    }
+}
