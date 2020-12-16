@@ -1,0 +1,10 @@
+/* Nested child */
+$base: #3D3D3D;
+$red: #FF0000;
+
+body {
+    color: $base;
+    > .red {
+        color: $red;
+    }
+}
