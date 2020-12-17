@@ -2,5 +2,5 @@
 
 This is a repository containing assignments for Holberton School.
 
-The files in this repo will be exploring CSS through multiple files
-
+Creating a stylized webpage iteratively.
+Becoming more familiar with CSS step by step.

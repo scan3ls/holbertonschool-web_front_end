@@ -1,6 +1,7 @@
 # 0x03. Sass &amp; Scss
 
 This is a repository containing assignments for Holberton School.
+Becoming more familiar with SASS step by step
 
 |FILES| DESCRIPTIONS|
 |---|---|
