@@ -6,7 +6,7 @@ h1 {
     @each $screen-size, $font-size in $sizes {
         @media screen and (max-width: #{$screen-size}px){
             & {
-                font-size: $font-size;
+                font-size: #{$font-size}px;
                 @if $screen-size == 320 {
                     &.small {
                         color: #1D1D1D;
