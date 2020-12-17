@@ -1,3 +1,4 @@
 # 0x00-HTML_ADVANCED
 
-Getting familiar with HTML
+Creating a webpage iteratively.
+Becoming more familiar with html step by step.
