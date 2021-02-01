@@ -1,0 +1,47 @@
+:root {
+    --red: #E0003C;
+    --hover-red: #BC1240;
+}
+
+a, a:hover, a:focus {
+    color: var(--red)!important;
+}
+
+.btn-primary {
+    background-color: var(--red);
+
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: var(--hover-red);
+}
+
+.btn-outline-primary {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-prirmry:active {
+    background-color: var(--red);
+    color: white;
+}
+
+.card, .card-header, .card-footer {
+    border-color: var(--red);
+    border-radius: 1rem;
+}
+
+.card-header:first-child {
+    border-radius: 1rem 1rem 0 0;
+}
+
+.card-header {
+    background-color: var(--red);
+    color: white;
+}
+
+.text-muted {
+    color: #8c8c8c;
+}
