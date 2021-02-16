@@ -15,7 +15,7 @@ function processError(itemName){
 
 function processOrder(itemName, callbackPayment, callbackError){
     console.log(`Verifying the stock of ${itemName}`);
-    if (stock[itemName] === 0) callbackError(itemName);
+    if (stock[itemName] == 0 || stock[itemName] == undefined) callbackError(itemName);
     else callbackPayment(itemName);
 }
 
