@@ -14,12 +14,13 @@ const countPrimeNumbers = () => {
 
 var t0 = performance.now();
 var primes = 0
-for (var i = 0; i < 100; i++) primes += countPrimeNumbers();
+for (var i = 0; i < 100; i++){
+    setTimeout(
+        primes => { primes += countPrimeNumbers() },
+        0
+    );
+}
 
-setTimeout(
-    function(){
-        var t1 = performance.now();
-        console.log(`Execution time of calculating prime numbers 100 times was ${t1-t0} milliseconds.`);
-    }, 0
-);
+var t1 = performance.now();
+console.log(`Execution time of calculating prime numbers 100 times was ${t1-t0} milliseconds.`);
 
