@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 1</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+        
+        <script type="application/javascript">
+
+            function createFamilyTree() {
+                var names = {'Guillaume': 0, 'Paualette': 0, 'Antoine': 0}
+                var content = "<table>"
+
+                content += "<tr><th scope=\"col\">Firstname</th><th scope=\"col\">Lastname</th></tr>";
+
+                for (const name in names) {
+                    content += `<tr><td>${name}</td><td>Salva</td></tr>`;
+                }
+
+                content += "</table>";
+                $( "body" ).append(content);
+            }
+
+            createFamilyTree();
+        </script>
+    </body>
+
+</html>

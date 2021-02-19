@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 1</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+        
+        <script type="application/javascript">
+
+            function createFamilyTree() {
+                var names = {'Guillaume': 0, 'Paualette': 0, 'Antoine': 0}
+
+                $( "body" ).append("<table>");
+                $( "table" ).append("<tbody>");
+                $( "tbody" ).append("<tr id=\"0\">", "<tr id=\"row1\">", "<tr id=\"row2\">", "<tr id=\"row3\">");
+
+                $( "tr#0" ).append("<th class=\"firstName\">", "<th class=\"lastName\">")
+                $( "tr[id^='row']" ).append("<td class=\"firstName\">", "<td class=\"lastName\">");
+
+                $( "tr#0 th.firstName").text("Firstname");
+                $( "tr#0 th.lastName").text("Lastname");
+                $( "tr#row1 td.firstName" ).text("Guillaume");
+                $( "tr#row2 td.firstName" ).text("Paulette");
+                $( "tr#row3 td.firstName" ).text("Antoine");
+                $( "td.lastName").text("Salva");
+            }
+
+            createFamilyTree();
+        </script>
+    </body>
+
+</html>
