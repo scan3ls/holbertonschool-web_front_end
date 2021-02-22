@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 6</title>
+    </head>
+    
+    <body>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+        <script type="application/javascript">
+
+            function createFamilyTree() {
+                $( "body" ).prepend("<table>")
+                $( "table" ).append( "<thead>", "<tbody>")
+                $( "thead" ).html("<tr><th>Firstname</th><th>Lastname</th></tr>")
+            }
+
+            function addNewMember(firstName, lastName, position) {
+                var content = $( "<tr>" )
+                content.append(`<td>${firstName}</td><td>${lastName}</td>`)
+
+                var x = $( "<td>" )
+                content.append(x)
+                x.html("(x)")
+                x.css("background-color", "orange")
+                x.click( function() {
+                        $(this).parent().remove()
+                    }
+                )
+                
+                if ( position === "before" ) {
+                    $( content ).prependTo( "tbody" )
+                    console.log("before")
+                } else {
+                    $( content ).appendTo( "tbody" )
+                    console.log("no")
+                }
+            }
+
+            function createForm() {
+                var form = $( "<form>" )
+                var text1 = $( '<input id="1" type="text" placeholder="value1">' )
+                var text2 = $( '<input id="2" type="text" placeholder="value2">' )
+                var select = $( '<select>' )
+                var button = $( '<input type="button" value="submit">' )
+                
+                select.append( '<option value="before">Before</option>')
+                select.append( '<option value="after">After</option>')
+
+                form.append(text1, text2, select, button )
+                button.click(
+                    function() {
+                        var option = $( "select option:selected").text()
+                        // console.log(text1.val(), text2.val(), option)
+                        addNewMember(text1.val(), text2.val(), option.toLowerCase())
+                    }
+                )
+
+                $( "table" ).before(form)
+            }
+
+            createFamilyTree()
+            createForm()
+        </script>
+    </body>
+
+</html>
