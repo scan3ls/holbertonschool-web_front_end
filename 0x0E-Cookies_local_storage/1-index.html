@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+    <input id="firstname" type="text" placeholder="Firstname">
+    <input type="email" name="email" id="email" placeholder="Email">
+    <button onclick="setCookies()">Log me in</button>
+    <h1>Cookies</h1>
+    <button onclick="showCookies()">Show the cookies</button>
+    
+    <!-- JS Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+    
+        function setCookies() {
+            var now = new Date()
+            var expire = new Date()
+            expire.setDate(now.getDate() + 10)
+
+            console.log(now)
+            console.log(expire)
+
+            cookies = {
+                "firstname": $('#firstname').val(),
+                "email": $('#email').val()
+            }
+
+            for (cookie in cookies){
+                document.cookie = `${cookie}=${cookies[cookie]}; expires=${expire}`
+            }
+        }
+
+        function showCookies(){
+            var p = $('<p>')
+            p.html(document.cookie)
+            $('body').append(p)
+        }
+
+        $(document).ready()
+    </script>
+</body>
+</html>
