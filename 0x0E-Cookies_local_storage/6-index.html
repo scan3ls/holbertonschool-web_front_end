@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+<body>
+    <!-- JS Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        var availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+        var storage = window.sessionStorage;
+        
+        function checkLocalStorage(){
+            storage.setItem('val', 'true');
+            var val = storage.getItem('val');
+
+            if (val !== 'true') alert('Sorry, your browser does not support Web storage. Try again with a better one');
+            
+            storage.removeItem('val');
+
+            createStore();
+            displayCart();
+        }
+
+        function addItemToCart(item){
+            storage.setItem(item, 'true');
+        }
+
+        function createStore(){
+            var list = $('<ul>')
+
+            for (var i in availableItems){
+                item = availableItems[i];
+                var li = $(`<li onclick="addItemToCart('${item}')">`)
+                li.html(item)
+                list.append(li)
+                li.css('cursor', 'pointer')
+            }
+
+            $('body').append(list)
+        }
+
+        function displayCart(){
+            console.log(storage.length)
+            if (storage.length !== 0) {
+                var p = $('<p>')
+                p.html(`You previously had ${storage.length} items in your cart`)
+                $('body').append(p)
+            }
+        }
+
+        // Main code
+        checkLocalStorage();
+    </script>
+</body>
+</html>

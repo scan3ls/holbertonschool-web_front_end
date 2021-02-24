@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+<body>
+    <div id="login">
+        <form>
+            <h2>Login to the website</h2>
+            <input id="firstname" type="text" placeholder="Firstname">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
+        </form>
+    </div>
+    <div id="welcome" style="display: none">
+        <h1>Welcome <span id="name"></span><a href="#" onclick="deleteCookiesAndShowForm()" style="font-weight: normal;margin-left: 10px;font-style: italic;">
+            (logout)
+        </a></h1>
+        
+    </div>
+    
+    <!-- JS Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script type="application/javascript">
+
+        function showCookies(){
+            var p = $('<p>')
+            var email = Cookies.get('email')
+            var firstname = Cookies.get('firstname')
+
+            p.html(`Email: ${email} - Firstname: ${firstname}`)
+            $('body').append(p)
+
+        }
+
+        function showForm() {
+            $('div#login').css("display", "block")
+            $('div#welcome').css("display", "none")
+        }
+
+        function hideForm() {
+            $('div#login').css('display', 'none')
+        }
+
+        function deleteCookiesAndShowForm() {
+            var cookies = document.cookie.split(' ')
+            for (var item in cookies){
+                cookie = cookies[item]
+                key = cookie.split('=')[0]
+                Cookies.remove(key)
+            }
+            
+            setTimeout(function(){
+                window.location.reload()
+            })
+
+        }
+
+        function showWelcomeMessageOrForm(){
+            var name = Cookies.get('firstname')
+            if (name){
+                hideForm()
+                $('span#name').html(name)
+                $('div#welcome').css('display', 'block')
+            } else {
+                showForm()
+            }
+        }
+
+        function setCookiesAndShowWelcomeMessage(){
+
+            Cookies.set('firstname', $('#firstname').val(), {expires: 10})
+            Cookies.set('email', $('#email').val(), {expires: 10})
+
+            setTimeout(function(){
+                window.location.reload()
+            })
+        }
+
+        // Main code
+        $(document).ready(
+            showWelcomeMessageOrForm()
+        )
+    </script>
+</body>
+</html>

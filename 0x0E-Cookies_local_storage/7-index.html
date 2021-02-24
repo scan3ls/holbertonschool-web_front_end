@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+</head>
+<body>
+    <!-- JS Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        var availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+        var storage = window.sessionStorage;
+        
+        function checkLocalStorage(){
+            storage.setItem('val', 'true');
+            var val = storage.getItem('val');
+
+            if (val !== 'true') alert('Sorry, your browser does not support Web storage. Try again with a better one');
+            
+            storage.removeItem('val');
+
+            createStore();
+            displayCart();
+        }
+
+        function getCartFromStrorage() {
+            return JSON.parse(JSON.stringify(storage))
+        }
+
+        function addItemToCart(item){
+            var myCart = getCartFromStrorage();
+            if (myCart[item]){
+                var quantity = parseInt(myCart[item]) + 1;
+                storage.setItem(item, `${quantity}`);
+            } else {
+                storage.setItem(item, '1');
+            }
+            displayCart();
+        }
+
+        function removeItemfromCart(item){
+            var myCart = getCartFromStrorage();
+
+            if (myCart[item]){
+                storage.removeItem(item);
+            }
+            displayCart();
+        }
+
+        function clearCart(){
+            storage.clear();
+            displayCart();
+        }
+
+        function createStore(){
+            $('body').append('<h2>Available products:</h2>');
+            var list = $('<ul>')
+
+            for (var i in availableItems){
+                var item = availableItems[i];
+                var li = $(`<li onclick="addItemToCart('${item}')">`);
+                li.html(item);
+                li.css('cursor', 'pointer');
+
+                list.append(li)
+            }
+
+            $('body').append(list)
+            $('body').append('<h2>Your cart:</h2>');
+            $('body').append('<div>');
+            $('div').append('<ul id="cart">');
+        }
+
+        function displayCart(){
+            $('#cart').html("")
+            updateCart();
+        }
+
+        function updateCart(){
+            var myCart = getCartFromStrorage();
+            if (JSON.stringify(myCart) === JSON.stringify({})){
+                $('#cart').append("<li>Your cart is empty</li>");
+            } else {
+                var li = $('<li onclick="clearCart()">Clear my cart</li>')
+                $('#cart').append(li)
+
+                for (var key in myCart) {
+                    value = myCart[key]
+
+                    li = $(`<li >`);
+                    li.html(`${key} x ${value} <span onclick="removeItemfromCart('${key}')">(remove)</span>`);
+
+                    $('#cart').append(li);
+                }
+            }
+        }
+
+        // Main code
+        checkLocalStorage();
+
+    </script>
+</body>
+</html>
